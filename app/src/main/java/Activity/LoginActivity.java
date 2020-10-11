@@ -22,7 +22,6 @@ import Model.UserAccount;
 import Retrofit.*;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.Observer;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -34,16 +33,18 @@ import retrofit2.Retrofit;
 
 
 public class LoginActivity extends AppCompatActivity {
-    Button login_btn;
-    TextView regisTextView,forgotPassword;
-    EditText email, password;
-    CompositeDisposable compositeDisposable =new CompositeDisposable();
-    IMyService iMyService;
-    String TaiKhoan, MatKhau;
-    AlertDialog alertDialog;
-    UserAccount userAccount;
-    SharedPreferences sharedPreferences;
-    boolean flag=false;
+
+    private Button login_btn;
+    private TextView regisTextView,forgotPassword;
+    private EditText email, password;
+    private CompositeDisposable compositeDisposable =new CompositeDisposable();
+    private IMyService iMyService;
+    private String TaiKhoan, MatKhau;
+    private AlertDialog alertDialog;
+    private UserAccount userAccount;
+    private SharedPreferences sharedPreferences;
+    private boolean flag=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onNext(Response<String> stringResponse) {
                             if(stringResponse.isSuccessful()){
-
-
                                 if(stringResponse.body().toString().contains("name"))
                                 {
                                     String responseString=stringResponse.body().toString();
@@ -157,13 +156,12 @@ public class LoginActivity extends AppCompatActivity {
                                     new Runnable() {
                                         public void run() {
                                             alertDialog.dismiss();
-
                                         }
                                     }, 500);
 
 
                             if(flag==true) {
-                                Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 intent.putExtra("userAcc", userAccount);
                                 intent.putExtra("change",0);
                                 startActivity(intent);
@@ -191,8 +189,9 @@ public class LoginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         forgotPassword=findViewById(R.id.forgotPassword);
     }
+
     private boolean CheckValidInput() {
-        Boolean valid=true;
+        Boolean valid = true;
         TaiKhoan=email.getText().toString();
         MatKhau=password.getText().toString();
         if(TaiKhoan.isEmpty() ||TaiKhoan.length() < 6 || TaiKhoan.length() >40 )
