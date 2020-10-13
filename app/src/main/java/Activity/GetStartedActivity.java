@@ -18,6 +18,7 @@ public class GetStartedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_getstarted);
         setUIReference();
 
+
         get_started.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
