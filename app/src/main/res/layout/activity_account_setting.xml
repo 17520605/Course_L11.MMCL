@@ -111,33 +111,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone" />
         <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="Email"
-            android:textColor="@color/font_blue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_phone" />
-
-        <EditText
-            android:id="@+id/input_email"
-            android:layout_width="370dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/form_setting"
-            android:elevation="2dp"
-            android:ems="10"
-            android:hint="nguyenhuuminhkhai@gmail.com"
-            android:inputType="text"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
-        <TextView
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,7 +119,7 @@
             android:text="Address"
             android:textColor="@color/font_blue"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_email" />
+            app:layout_constraintTop_toBottomOf="@+id/input_phone" />
 
         <EditText
             android:id="@+id/input_address"
@@ -165,7 +138,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address" />
         <TextView
-            android:id="@+id/discription"
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -176,7 +149,7 @@
             app:layout_constraintTop_toBottomOf="@+id/input_address" />
 
         <EditText
-            android:id="@+id/input_discription"
+            android:id="@+id/input_description"
             android:layout_width="370dp"
             android:layout_height="47dp"
             android:layout_marginTop="4dp"
@@ -190,34 +163,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discription" />
-        <TextView
-            android:id="@+id/birthday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="BirthDay"
-            android:textColor="@color/font_blue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_discription" />
-
-        <EditText
-            android:id="@+id/input_birthday"
-            android:layout_width="370dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/form_setting"
-            android:elevation="2dp"
-            android:ems="10"
-            android:hint="15/05/1999"
-            android:inputType="date"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/birthday" />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
         <TextView
             android:id="@+id/gender"
             android:layout_width="wrap_content"
@@ -227,30 +173,28 @@
             android:text="Gender"
             android:textColor="@color/font_blue"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_birthday"/>
-
-        <RadioButton
-            android:id="@+id/male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Male"
-            app:layout_constraintEnd_toStartOf="@+id/female"
+            app:layout_constraintTop_toBottomOf="@+id/input_description"/>
+        <EditText
+            android:id="@+id/input_gender"
+            android:layout_width="370dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/form_setting"
+            android:elevation="2dp"
+            android:ems="10"
+            android:hint="Nam"
+            android:inputType="date"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gender" />
 
-        <RadioButton
-            android:id="@+id/female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="224dp"
-            android:text="Female"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/update_btn"
             android:layout_width="307dp"
             android:layout_height="48dp"
             android:layout_marginTop="44dp"
@@ -262,7 +206,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/male" />
+            app:layout_constraintTop_toBottomOf="@+id/input_gender" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

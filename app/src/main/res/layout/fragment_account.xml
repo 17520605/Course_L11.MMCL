@@ -8,7 +8,7 @@
     android:background="@color/colorbackground">
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/accountFrag_user_avatar"
         android:layout_width="69dp"
         android:layout_height="67dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,8 +16,8 @@
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/group_8" />
+        app:layout_constraintVertical_bias="0.105"
+        app:srcCompat="@drawable/account_fragment_useravatar" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -29,17 +29,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/personal" />
 
-    <ImageView
-        android:id="@+id/imageView11"
+    <TextView
+        android:id="@+id/accountFrag_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="88dp"
+        android:fontFamily="sans-serif"
+        android:text="Nguyễn Hữu Minh Khai"
+        android:textColor="#000"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.644"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.129"
-        app:srcCompat="@drawable/nguyn_hu_minh_khai" />
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toEndOf="@+id/accountFrag_user_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/account_setting"
@@ -121,80 +124,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/log_out_account"
         app:srcCompat="@drawable/vesion" />
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="413dp"
-        android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bar" />
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="45dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:srcCompat="@drawable/ellipse_6" />
-
-    <ImageView
-        android:id="@+id/btn_home"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_category"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="@+id/imageView12"
-        app:srcCompat="@drawable/icons8_home_100px" />
-
-    <ImageView
-        android:id="@+id/btn_category"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cart"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icons8_circled_menu_100px" />
-
-    <ImageView
-        android:id="@+id/btn_cart"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icons8_shopping_cart_100px" />
-
-    <ImageView
-        android:id="@+id/btn_menu"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toEndOf="@+id/btn_bell"
-        app:srcCompat="@drawable/icons8_menu_100px_5" />
-
-    <ImageView
-        android:id="@+id/btn_bell"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_cart"
-        app:srcCompat="@drawable/icons8_bell_100px" />
 </androidx.constraintlayout.widget.ConstraintLayout>
