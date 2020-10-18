@@ -13,11 +13,13 @@ import Model.ChangeProfileResponeModel;
 import Model.User;
 import Model.UserAccount;
 import Retrofit.IUserService;
+import Retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 
 
@@ -95,46 +97,46 @@ public class AccountSettingActivity extends AppCompatActivity {
     }
 
     private void ChangeInfo(){
-        service = new Retrofit.Builder()
-                .baseUrl("http://149.28.24.98:9000/") // API base url
-                .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
-                .build()
-                .create(IUserService.class);
+
+        Retrofit client = RetrofitClient.getInstance();
+        service = client.create(IUserService.class);
 
         //==============================get Share references===============================================================
-        service.change( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODI4Nzk3YjRlMzgwN2JmNDBmZWM3MiIsInJvbGUiOiJzdHVkZW50IiwiYWN0aXZlIjoxLCJpYXQiOjE2MDMwMTQzMjZ9.R0WIh0xLtnKqAlF7bHqbc5SoYoPMiAJ9DErKO--uRlA",
-                        Name_EditText.getText().toString(),
+        service.change( Name_EditText.getText().toString(),
                         Phone_EditText.getText().toString(),
                         Address_EditText.getText().toString(),
                         Description_EditText.getText().toString(),
-                        Gender_EditText.getText().toString()).enqueue(new Callback<Response<String>>() {
-            @Override
-            public void onResponse(Call<Response<String>> call, Response<Response<String>> response) {
-                String message = "NULL";
-                String code = Integer.toString(response.code()) ;
-                Toast.makeText(AccountSettingActivity.this, code, Toast.LENGTH_LONG).show();
+                        Gender_EditText.getText().toString(),
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODI4Nzk3YjRlMzgwN2JmNDBmZWM3MiIsInJvbGUiOiJzdHVkZW50IiwiYWN0aXZlIjoxLCJpYXQiOjE2MDMwMzAyNDN9.QKnyZON9N7tr5xhlsvoGC2Bp9SYtpZfaFQ47eaukf48")
+                .enqueue(new Callback<ChangeProfileResponeModel>() {
+                    @Override
+                    public void onResponse(Call<ChangeProfileResponeModel> call, Response<ChangeProfileResponeModel> response) {
+                        String message = "NULL";
+                        if(response!=null && response.body()!=null) message = response.body().getMessage();
+                        String code = Integer.toString(response.code()) ;
+                        Toast.makeText(AccountSettingActivity.this, code, Toast.LENGTH_LONG).show();
 
+                        if(response.isSuccessful()){
 
-                Toast.makeText(AccountSettingActivity.this, "Da phan hoi", Toast.LENGTH_LONG).show();
-                if(response.isSuccessful()){
+                            if(user == null) user = new UserAccount();
+                            user.hoten = response.body().getUser().getName();
+                            user.sdt = response.body().getUser().getPhone();
+                            user.diachia = response.body().getUser().getAddress();
+                            user.mota = response.body().getUser().getDescription();
+                            user.gioitinh = response.body().getUser().getGender();
+                            ReloadContent();
+                            Toast.makeText(AccountSettingActivity.this, "Thay đổi thành công", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(AccountSettingActivity.this, "That bai", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
-                    Toast.makeText(AccountSettingActivity.this, message, Toast.LENGTH_LONG).show();
-                   // if(user == null) user = new UserAccount();
-
-                    ReloadContent();
-                }
-                else{
-                    Toast.makeText(AccountSettingActivity.this, "That bai", Toast.LENGTH_LONG).show();
-                    Toast.makeText(AccountSettingActivity.this, message, Toast.LENGTH_LONG).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Response<String>> call, Throwable t) {
-                //Toast.makeText(getActivity(), "Loi ket noi may chu", Toast.LENGTH_LONG).show();
-            }
-        });
+                    @Override
+                    public void onFailure(Call<ChangeProfileResponeModel> call, Throwable t) {
+                        //Toast.makeText(getActivity(), "Loi ket noi may chu", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     private void ReloadContent(){

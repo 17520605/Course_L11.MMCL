@@ -10,6 +10,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface IUserService {
     @POST("register")
@@ -28,13 +29,13 @@ public interface IUserService {
                      @Field("password") String password);
 
 
-    @POST("change-profile")
+    @PUT("change-profile")
     @FormUrlEncoded
-    Call<Response<String>> change(@Header("auth-token") String token,
-                                           @Field("name") String name,
-                                           @Field("phone") String phone,
-                                           @Field("address") String address,
-                                           @Field("description") String description,
-                                           @Field("gender") String gender);
+    Call<ChangeProfileResponeModel> change( @Field("name") String name,
+                                   @Field("phone") String phone,
+                                   @Field("address") String address,
+                                   @Field("description") String description,
+                                   @Field("gender") String gender,
+                                   @Header("auth-token") String token);
 
 }
