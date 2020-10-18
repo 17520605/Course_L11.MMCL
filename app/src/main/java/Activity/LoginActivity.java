@@ -25,11 +25,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.Observer;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
-
 import retrofit2.Response;
 import retrofit2.Retrofit;
-
-
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -95,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSubscribe(Disposable d) {
 
                         }
-
                         @Override
                         public void onNext(Response<String> stringResponse) {
                             if(stringResponse.isSuccessful()){
@@ -115,7 +111,6 @@ public class LoginActivity extends AppCompatActivity {
                                                 MatKhau,
                                                 jo.getString("_id")
                                         );
-
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("name",userAccount.getHoten());
                                         editor.putString("phone",userAccount.getSdt());
@@ -132,8 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-
-
                                 }
                                 else{
                                     flag=false;
@@ -142,21 +135,18 @@ public class LoginActivity extends AppCompatActivity {
                                 flag=false;
                             }
                         }
-
                         @Override
                         public void onError(Throwable e) {
                             new android.os.Handler().postDelayed(
                                     new Runnable() {
                                         public void run() {
                                             alertDialog.dismiss();
-
                                         }
                                     }, 500);
                             Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             login_btn.setClickable(true);
                             login_btn.setEnabled(true);
                         }
-
                         @Override
                         public void onComplete() {
                             new android.os.Handler().postDelayed(
@@ -165,8 +155,6 @@ public class LoginActivity extends AppCompatActivity {
                                             alertDialog.dismiss();
                                         }
                                     }, 500);
-
-
                             if(flag==true) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 intent.putExtra("userAcc", userAccount);
