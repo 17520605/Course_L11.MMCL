@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         setUIReference();
 
         Retrofit retrofitClient= RetrofitClient.getInstance();
-        iMyService=retrofitClient.create(IMyService.class);
+        iMyService = retrofitClient.create(IMyService.class);
         alertDialog= new SpotsDialog.Builder().setContext(this).build();
 
         regisTextView.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("id",userAccount.getID());
                                         editor.commit();
 
-                                        Toast.makeText(LoginActivity.this, userAccount.getToken(), Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(LoginActivity.this, userAccount.getToken(), Toast.LENGTH_LONG).show();
 
                                         flag=true;
                                     } catch (JSONException e) {

@@ -98,8 +98,11 @@ public class AccountSettingActivity extends AppCompatActivity {
 
     private void ChangeInfo(){
 
-        Retrofit client = RetrofitClient.getInstance();
-        service = client.create(IUserService.class);
+        service = new Retrofit.Builder()
+                .baseUrl("http://149.28.24.98:9000/") // API base url
+                .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
+                .build()
+                .create(IUserService.class);
 
         //==============================get Share references===============================================================
         service.change( Name_EditText.getText().toString(),

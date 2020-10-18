@@ -29,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         setUIReference();
         bottomNav.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
     private void setUIReference() {
