@@ -1,5 +1,6 @@
 package Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -121,7 +122,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                         String message = "NULL";
                         if(response!=null && response.body()!=null) message = response.body().getMessage();
                         String code = Integer.toString(response.code()) ;
-                        Toast.makeText(AccountSettingActivity.this, code, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(AccountSettingActivity.this, code, Toast.LENGTH_LONG).show();
 
                         if(response.isSuccessful()){
 
@@ -133,6 +134,10 @@ public class AccountSettingActivity extends AppCompatActivity {
                             user.gioitinh = response.body().getUser().getGender();
                             ReloadContent();
                             Toast.makeText(AccountSettingActivity.this, "Thay đổi thành công", Toast.LENGTH_LONG).show();
+
+                            Intent intent=new Intent(AccountSettingActivity.this,HomeActivity.class);
+                            startActivity(intent);
+
                         }
                         else{
                             Toast.makeText(AccountSettingActivity.this, "That bai", Toast.LENGTH_LONG).show();
