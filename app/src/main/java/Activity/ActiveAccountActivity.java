@@ -1,5 +1,6 @@
 package Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +56,8 @@ public class ActiveAccountActivity extends AppCompatActivity {
                             public void onResponse(Call<String> call, Response<String> response) {
                                 if(response!=null && response.code() == 200){
                                     Toast.makeText(ActiveAccountActivity.this, "Kích hoạt thành công", Toast.LENGTH_LONG).show();
+                                    Intent intent=new Intent(ActiveAccountActivity.this,HomeActivity.class);
+                                    startActivity(intent);
                                 }
                                 else {
                                     Toast.makeText(ActiveAccountActivity.this, "Mã kích hoạt không hợp lệ", Toast.LENGTH_LONG).show();
