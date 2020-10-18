@@ -6,16 +6,17 @@ import android.view.LayoutInflater;
 
 import com.example.tutorial_v1.R;
 
-class LoadingActivity {
+class LoadingDialog {
     private Activity activity;
     private AlertDialog dialog;
-    LoadingActivity(Activity myActivity){
+    LoadingDialog(Activity myActivity){
         activity = myActivity;
     }
     void startLoadingDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.activity_login,null));
+        builder.setView(inflater.inflate(R.layout.customer_loading,null));
+        builder.setCancelable(true);
         dialog = builder.create();
         dialog.show();
     }

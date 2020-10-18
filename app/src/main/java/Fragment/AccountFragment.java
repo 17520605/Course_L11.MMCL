@@ -14,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.example.tutorial_v1.R;
 
 import Activity.AccountSettingActivity;
-import Activity.LoginActivity;
-import Activity.RegisterActivity;
 import Model.User;
 import Model.UserAccount;
 import Retrofit.IUserService;

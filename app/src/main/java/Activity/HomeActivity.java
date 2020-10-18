@@ -10,6 +10,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import Fragment.AccountFragment;
+import Fragment.HomeFragment;
+import Fragment.CategoriesFragment;
+import Fragment.CartFragment;
+import Fragment.NotificationFragment;
 import Model.UserAccount;
 
 
@@ -36,6 +40,19 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nav_btn_account:
                 fragment = new AccountFragment();
+                break;
+            case R.id.nav_btn_home:
+                fragment = new HomeFragment();
+                break;
+            case R.id.nav_btn_categories:
+                fragment = new CategoriesFragment();
+                break;
+            case R.id.nav_btn_cart:
+                fragment = new CartFragment();
+                break;
+            case R.id.nav_btn_notification:
+                fragment = new NotificationFragment();
+                break;
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
         return true;

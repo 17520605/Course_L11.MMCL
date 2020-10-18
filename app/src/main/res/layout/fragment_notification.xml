@@ -13,21 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView26"
-        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cart" />
-
-    <ImageView
-        android:id="@+id/imageView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="188dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_0_course_" />
+        app:srcCompat="@drawable/notification" />
 
     <ImageView
         android:id="@+id/imageView27"

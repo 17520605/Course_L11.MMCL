@@ -13,21 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView26"
-        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cart" />
-
-    <ImageView
-        android:id="@+id/imageView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="188dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_0_course_" />
 
     <ImageView
         android:id="@+id/imageView27"
@@ -63,13 +51,28 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView27"
         app:srcCompat="@drawable/you_do_not_have_any_courses_in_your_shopping_cart_" />
 
-    <ImageView
+    <Button
         android:id="@+id/btn_buy_course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_btn1"
+        android:text="Buy a course"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView31"
-        app:srcCompat="@drawable/group_1" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView31" />
+
+    <TextView
+        android:id="@+id/number_course"
+        android:layout_width="117dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:text="(0 Course)"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toEndOf="@+id/imageView23"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

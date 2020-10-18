@@ -60,11 +60,11 @@
 
         <Button
             android:id="@+id/login_btn"
-            android:layout_width="307dp"
+            android:layout_width="313dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_btn"
-            android:text="Login Account"
+            android:text="LOGIN ACCOUNT"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -159,6 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     }, 500);
                             if(flag==true) {
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 intent.putExtra("userAcc", userAccount);
                                 intent.putExtra("change",0);
