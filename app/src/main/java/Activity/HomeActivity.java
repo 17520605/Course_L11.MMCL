@@ -1,47 +1,45 @@
 package Activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.tutorial_v1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import android.app.AlertDialog;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-
+import Fragment.AccountFragment;
 import Model.UserAccount;
-import Retrofit.IMyService;
-import dmax.dialog.SpotsDialog;
-import retrofit2.Retrofit;
 
-import static android.view.View.GONE;
 
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNav;
+    public UserAccount userAccount = new UserAccount();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        setUIReference();
+        bottomNav.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 
+    private void setUIReference() {
+        bottomNav = findViewById(R.id.bottomNav);
+    }
+
+    private boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment = new Fragment();
+        switch (item.getItemId()) {
+            case R.id.nav_btn_account:
+                fragment = new AccountFragment(userAccount);
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+        return true;
+    }
 // ==============================================================================================================
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
