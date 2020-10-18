@@ -8,6 +8,7 @@ public class User implements Serializable {
     private String created_at;
     private String _id;
     private String email;
+    private String name;
     private String password;
     private String phone;
     private String address;
@@ -111,5 +112,13 @@ public class User implements Serializable {
 
     public void set__v(String __v) {
         this.__v = __v;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -43,9 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText description;
     private Button sign_up_btn;
 
-    private  String Name, Password, Phone, Address, Description, Gender, Email;
+    private String Name, Password, Phone, Address, Description, Gender, Email;
     private String response = "AA";
-    private IRegisterService service;
+    private IUserService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +55,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         Retrofit retrofitClient = RetrofitClient.getInstance();
         //service = retrofitClient.create(IRegisterService.class);
-        IRegisterService service = new Retrofit.Builder()
+        IUserService service = new Retrofit.Builder()
                 .baseUrl("http://149.28.24.98:9000/") // API base url
                 .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
                 .build()
-                .create(IRegisterService.class);
+                .create(IUserService.class);
 
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override

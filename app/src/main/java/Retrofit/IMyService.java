@@ -27,6 +27,4 @@ public interface IMyService {
                                                 @Field("description") String description,
                                                 @Field("gender") String gender,
                                                 @Header("auth-token") String authToken);
-
-
 }

@@ -7,32 +7,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.tutorial_v1.R;
 
 import Activity.AccountSettingActivity;
+import Activity.LoginActivity;
+import Activity.RegisterActivity;
+import Model.User;
 import Model.UserAccount;
+import Retrofit.IUserService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AccountFragment extends Fragment
 {
     private View rootView;
-    private UserAccount userAccount;
-
+    private UserAccount user = new UserAccount();
+    private IUserService service;
     private TextView Name;
 
 
-    ImageView accountSetting;
-    public AccountFragment(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
+    private ImageView accountSetting;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,29 +47,15 @@ public class AccountFragment extends Fragment
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_account, container, false);
 
-        setUIReference();
-        setUIEventHandles();
-        //circleImageView=rootView.findViewById(R.id.accountFrag_user_avatar);
-       // String avurl=URLDefault+userAccount.getAva();
-        //Picasso.get().load(avurl).placeholder(R.drawable.account_fragment_useravatar).error(R.drawable.account_fragment_useravatar).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(circleImageView);
-        //Cập nhật thông tin cá nhân
+        initUIs();
+        initEventHandles();
+
         Name = rootView.findViewById(R.id.accountFrag_user_name);
-        Name.setText(userAccount.getHoten());
-//        ImageView account_setting=rootView.findViewById(R.id.account_setting);
-//        account_setting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(), UserInfoActivity.class);
-//                intent.putExtra("userAcc", userAccount);
-//                startActivityForResult(intent,1);
-//            }
-//        });
-//
+
+        Sync();
+
         return rootView;
     }
-
-    private  boolean flag=false;
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -71,15 +63,52 @@ public class AccountFragment extends Fragment
         //Update UI from the child-activity.
     }
 
-    private void setUIReference() {
+    private void initUIs() {
+
         accountSetting = rootView.findViewById(R.id.account_setting);
     }
 
-    private void setUIEventHandles(){
+    private void initEventHandles(){
         accountSetting.setOnClickListener(v -> {
-            //Toast.makeText(getActivity(), "Lỗi AAAAAAAAAA", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent( getActivity(), AccountSettingActivity.class);
             getActivity().startActivity(intent);
         });
     }
+
+    private void Sync(){
+        service = new Retrofit.Builder()
+                .baseUrl("http://149.28.24.98:9000/") // API base url
+                .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
+                .build()
+                .create(IUserService.class);
+
+        //==============================get Share references===============================================================
+        service.login("nguyenngockhai25@gmail.com", "K1234567").enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    if(user == null) user = new UserAccount();
+                    user.hoten = response.body().getName();
+                    ReloadContent();
+                }
+                else{
+                    Toast.makeText(getActivity(), "Co van khi lay du lieu", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(getActivity(), "Loi ket noi may chu", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void ReloadContent(){
+        // reload tat ca UI theo data user
+        if(user != null){
+            this.Name.setText(user.hoten);
+        }
+    }
+
 }
+

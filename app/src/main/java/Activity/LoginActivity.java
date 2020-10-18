@@ -128,6 +128,9 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("password",MatKhau);
                                         editor.putString("id",userAccount.getID());
                                         editor.commit();
+
+                                        Toast.makeText(LoginActivity.this, userAccount.getToken(), Toast.LENGTH_LONG).show();
+
                                         flag=true;
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -172,7 +175,6 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("userAcc", userAccount);
                                 intent.putExtra("change",0);
                                 startActivity(intent);
-                                //CustomIntent.customType(LoginActivity.this, "right-to-left");
 
                             }
                             else {

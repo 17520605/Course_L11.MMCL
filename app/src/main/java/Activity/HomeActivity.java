@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         Fragment fragment = new Fragment();
         switch (item.getItemId()) {
             case R.id.nav_btn_account:
-                fragment = new AccountFragment(userAccount);
+                fragment = new AccountFragment();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
         return true;
