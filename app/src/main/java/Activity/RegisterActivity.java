@@ -24,6 +24,7 @@ import android.os.Trace;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tutorial_v1.R;
@@ -42,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText email;
     private EditText description;
     private Button sign_up_btn;
+    private TextView sing_in_btn;
 
     private String Name, Password, Phone, Address, Description, Gender, Email;
     private String response = "AA";
@@ -51,29 +53,44 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        setUIReference();
+        initUIs();
+        initEventHandles();
+    }
 
-        Retrofit retrofitClient = RetrofitClient.getInstance();
-        //service = retrofitClient.create(IRegisterService.class);
-        IUserService service = new Retrofit.Builder()
-                .baseUrl("http://149.28.24.98:9000/") // API base url
-                .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
-                .build()
-                .create(IUserService.class);
+    private void initUIs() {
+        name = findViewById(R.id.name);
+        gender = findViewById(R.id.gender);
+        phone = findViewById(R.id.phone);
+        address = findViewById(R.id.address);
+        password = findViewById(R.id.password);
+        email = findViewById(R.id.email);
+        description = findViewById(R.id.description);
+        sign_up_btn = findViewById(R.id.sign_up_btn);
+        sing_in_btn = findViewById(R.id.sign_in);
+    }
 
+    private void initEventHandles(){
+
+        // Thuc hien dang ky
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(isValidate()){
                     try{
+                        IUserService service = new Retrofit.Builder()
+                                .baseUrl("http://149.28.24.98:9000/") // API base url
+                                .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
+                                .build()
+                                .create(IUserService.class);
                         service.register(   name.getText().toString(),
-                                            password.getText().toString(),
-                                            phone.getText().toString(),
-                                            address.getText().toString(),
-                                            description.getText().toString(),
-                                            gender.getText().toString(),
-                                            email.getText().toString()
-                                )
+                                password.getText().toString(),
+                                phone.getText().toString(),
+                                address.getText().toString(),
+                                description.getText().toString(),
+                                gender.getText().toString(),
+                                email.getText().toString()
+                        )
                                 .enqueue(new Callback<User>() {
                                     @Override
                                     public void onResponse(Call<User> call, Response<User> response) {
@@ -94,23 +111,16 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
                     }
                     catch (Exception ex){
-
                     }
-
                 }
             }
         });
-    }
 
-    private void setUIReference() {
-        name = findViewById(R.id.name);
-        gender = findViewById(R.id.gender);
-        phone = findViewById(R.id.phone);
-        address = findViewById(R.id.address);
-        password = findViewById(R.id.password);
-        email = findViewById(R.id.email);
-        description = findViewById(R.id.description);
-        sign_up_btn = findViewById(R.id.sign_up_btn);
+        // Quay lai dang nhap
+        sing_in_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
     }
 
     private boolean isValidate() {

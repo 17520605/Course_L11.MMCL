@@ -24,26 +24,50 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActiveAccountActivity extends AppCompatActivity {
 
-    private EditText Email_EditText;
+    private EditText VerifyCode_EditText;
     private Button Verify_Button;
 
-    private UserAccount user;
     private IUserService service;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_setting);
+        setContentView(R.layout.activity_code);
         initUIs();
         initEventHandles();
-
     }
 
     private void initUIs() {
-
+        VerifyCode_EditText = findViewById(R.id.code);
+        Verify_Button = findViewById(R.id.login_btn);
     }
 
     private void initEventHandles(){
+        Verify_Button.setOnClickListener(v -> {
+            service = new Retrofit.Builder()
+                    .baseUrl("http://149.28.24.98:9000/") // API base url
+                    .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về
+                    .build()
+                    .create(IUserService.class);
+            if(VerifyCode_EditText != null && VerifyCode_EditText.getText().toString() != ""){
+                service .active( "nguyenhuuminhkhai1@gmail.com", VerifyCode_EditText.getText().toString())
+                        .enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                if(response!=null && response.code() == 200){
+                                    Toast.makeText(ActiveAccountActivity.this, "Kích hoạt thành công", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(ActiveAccountActivity.this, "Mã kích hoạt không hợp lệ", Toast.LENGTH_LONG).show();
+                                }
+                            }
 
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                Toast.makeText(ActiveAccountActivity.this, "Loi may chu", Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }
+        });
     }
 
 }

@@ -38,4 +38,10 @@ public interface IUserService {
                                    @Field("gender") String gender,
                                    @Header("auth-token") String token);
 
+
+    @POST("active-account")
+    @FormUrlEncoded
+    Call<String> active( @Field("email") String email,
+                         @Field("activeToken") String activeToken);
+
 }

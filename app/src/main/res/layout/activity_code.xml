@@ -30,7 +30,7 @@
             android:background="@drawable/textfild_input"
             android:elevation="2dp"
             android:ems="10"
-            android:hint="Email or phone"
+            android:hint="Enter verify code"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

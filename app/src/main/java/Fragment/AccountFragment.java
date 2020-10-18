@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.tutorial_v1.R;
 
 import Activity.AccountSettingActivity;
+import Activity.ActiveAccountActivity;
 import Model.User;
 import Model.UserAccount;
 import Retrofit.IUserService;
@@ -29,9 +30,11 @@ public class AccountFragment extends Fragment
     private UserAccount user = new UserAccount();
     private IUserService service;
     private TextView Name;
-
+    private ImageView Active_ImageView;
+    private ImageView NonActive_ImageView;
 
     private ImageView accountSetting;
+    private ImageView contract;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,8 +65,10 @@ public class AccountFragment extends Fragment
     }
 
     private void initUIs() {
-
         accountSetting = rootView.findViewById(R.id.account_setting);
+        contract = rootView.findViewById(R.id.contact_support);
+        Active_ImageView = rootView.findViewById(R.id.active_btn);
+        NonActive_ImageView = rootView.findViewById(R.id.nonactive_btn);
     }
 
     private void initEventHandles(){
@@ -71,6 +76,13 @@ public class AccountFragment extends Fragment
             Intent intent = new Intent( getActivity(), AccountSettingActivity.class);
             getActivity().startActivity(intent);
         });
+
+        NonActive_ImageView.setOnClickListener(v -> {
+            Intent intent = new Intent( getActivity(), ActiveAccountActivity.class);
+            getActivity().startActivity(intent);
+        });
+
+
     }
 
     private void Sync(){
@@ -87,6 +99,7 @@ public class AccountFragment extends Fragment
                 if(response.isSuccessful()){
                     if(user == null) user = new UserAccount();
                     user.hoten = response.body().getName();
+                    user.token = "";
                     ReloadContent();
                 }
                 else{
@@ -105,6 +118,14 @@ public class AccountFragment extends Fragment
         // reload tat ca UI theo data user
         if(user != null){
             this.Name.setText(user.hoten);
+            if(user.token == ""){
+                Active_ImageView.setVisibility(View.GONE);
+                NonActive_ImageView.setVisibility(View.VISIBLE);
+            }
+            else {
+                Active_ImageView.setVisibility(View.VISIBLE);
+                NonActive_ImageView.setVisibility(View.GONE);
+            }
         }
     }
 

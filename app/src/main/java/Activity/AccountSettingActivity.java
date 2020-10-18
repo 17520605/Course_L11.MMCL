@@ -26,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AccountSettingActivity extends AppCompatActivity {
 
     private ImageView Back_Button;
+
     private ImageView Avatar_ImageView;
     private EditText Name_EditText;
     private EditText Phone_EditText;
@@ -48,7 +49,6 @@ public class AccountSettingActivity extends AppCompatActivity {
 
     private void initUIs() {
         Back_Button = findViewById(R.id.btn_back);
-       // Avatar_ImageView = findViewById(R.id.imageView19);
         Name_EditText = findViewById(R.id.input_name);
         Phone_EditText = findViewById(R.id.input_phone);
         Email_EditText = findViewById(R.id.input_email);
