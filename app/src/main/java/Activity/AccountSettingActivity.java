@@ -29,6 +29,7 @@ public class AccountSettingActivity extends AppCompatActivity {
     private ImageView Avatar_ImageView;
     private EditText Name_EditText;
     private EditText Phone_EditText;
+    private EditText Email_EditText;
     private EditText Address_EditText;
     private EditText Description_EditText;
     private EditText Gender_EditText;
@@ -50,10 +51,12 @@ public class AccountSettingActivity extends AppCompatActivity {
        // Avatar_ImageView = findViewById(R.id.imageView19);
         Name_EditText = findViewById(R.id.input_name);
         Phone_EditText = findViewById(R.id.input_phone);
+        Email_EditText = findViewById(R.id.input_email);
         Address_EditText = findViewById(R.id.input_address);
         Description_EditText = findViewById(R.id.input_description);
         Gender_EditText = findViewById(R.id.input_gender);
         Change_Button = findViewById(R.id.update_btn);
+        Email_EditText.setEnabled(false);
     }
 
     private void initEventHandles(){
@@ -78,6 +81,7 @@ public class AccountSettingActivity extends AppCompatActivity {
 
                     user.hoten = response.body().getName();
                     user.sdt = response.body().getPhone();
+                    user.mail = response.body().getEmail();
                     user.diachia = response.body().getAddress();
                     user.mota = response.body().getDescription();
                     user.gioitinh = response.body().getGender();
@@ -146,6 +150,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         if(user != null){
             Name_EditText.setText(user.hoten);
             Phone_EditText.setText(user.sdt);
+            Email_EditText.setText(user.mail);
             Address_EditText.setText(user.diachia);
             Description_EditText.setText(user.mota);
             Gender_EditText.setText(user.gioitinh);

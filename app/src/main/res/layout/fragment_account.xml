@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/accountFrag_user_avatar"
-        android:layout_width="69dp"
-        android:layout_height="67dp"
+        android:layout_width="87dp"
+        android:layout_height="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
@@ -34,15 +34,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="92dp"
         android:fontFamily="sans-serif"
         android:text="Nguyễn Hữu Minh Khai"
         android:textColor="#000"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toEndOf="@+id/accountFrag_user_avatar"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/account_setting"
@@ -124,4 +124,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/log_out_account"
         app:srcCompat="@drawable/vesion" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="28dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/accountFrag_user_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/accountFrag_user_name"
+        app:srcCompat="@drawable/active_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
