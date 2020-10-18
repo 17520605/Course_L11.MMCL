@@ -93,7 +93,7 @@ public class AccountFragment extends Fragment
                 .create(IUserService.class);
 
         //==============================get Share references===============================================================
-        service.login("nguyenngockhai25@gmail.com", "K1234567").enqueue(new Callback<User>() {
+        service.login("nguyenhuuminhkhai@gmail.com", "K123123123").enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){

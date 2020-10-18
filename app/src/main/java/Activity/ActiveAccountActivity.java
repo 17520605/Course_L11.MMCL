@@ -49,7 +49,7 @@ public class ActiveAccountActivity extends AppCompatActivity {
                     .build()
                     .create(IUserService.class);
             if(VerifyCode_EditText != null && VerifyCode_EditText.getText().toString() != ""){
-                service .active( "nguyenhuuminhkhai1@gmail.com", VerifyCode_EditText.getText().toString())
+                service .active( "nguyenhuuminhkhai@gmail.com", VerifyCode_EditText.getText().toString())
                         .enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {

@@ -73,7 +73,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                 .create(IUserService.class);
 
         //==============================get Share references===============================================================
-        service.login("nguyenngockhai25@gmail.com", "K1234567").enqueue(new Callback<User>() {
+        service.login("nguyenhuuminhkhai@gmail.com", "K123123123").enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
@@ -114,7 +114,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                         Address_EditText.getText().toString(),
                         Description_EditText.getText().toString(),
                         Gender_EditText.getText().toString(),
-                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODI4Nzk3YjRlMzgwN2JmNDBmZWM3MiIsInJvbGUiOiJzdHVkZW50IiwiYWN0aXZlIjoxLCJpYXQiOjE2MDMwMzAyNDN9.QKnyZON9N7tr5xhlsvoGC2Bp9SYtpZfaFQ47eaukf48")
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODI3MDliYjRlMzgwN2JmNDBmZWM3MSIsInJvbGUiOiJzdHVkZW50IiwiYWN0aXZlIjowLCJpYXQiOjE2MDMwNDMzODN9.pvS1-9UNOLLC5on4fLPrE4yn6MC7dS7f8Vhj2ujkZLg")
                 .enqueue(new Callback<ChangeProfileResponeModel>() {
                     @Override
                     public void onResponse(Call<ChangeProfileResponeModel> call, Response<ChangeProfileResponeModel> response) {
