@@ -171,7 +171,12 @@ public class UploadAvatarActivity extends AppCompatActivity {
 
     private void ReloadContent(){
         if(user != null && !user.ava.isEmpty()){
-            Picasso.get().load("http://149.28.24.98:9000/upload/user_image/" + user.ava).placeholder(R.drawable.logo).error(R.drawable.logo).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(avatar);
+            Picasso.get().load("http://149.28.24.98:9000/upload/user_image/" + user.ava)
+                    .placeholder(R.drawable.noavatar)
+                    .error(R.drawable.logo)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(avatar);
         }
     }
 

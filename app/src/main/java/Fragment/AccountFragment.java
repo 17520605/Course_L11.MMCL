@@ -150,8 +150,8 @@ public class AccountFragment extends Fragment
             }
 
             Picasso.get().load("http://149.28.24.98:9000/upload/user_image/" + user.ava)
-                    .placeholder(R.drawable.logo)
-                    .error(R.drawable.logo)
+                    .placeholder(R.drawable.noavatar)
+                    .error(R.drawable.noavatar)
                     .networkPolicy(NetworkPolicy.NO_CACHE)
                     .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .into(avatar);
