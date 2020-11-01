@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/changepasswordsuccessfull_image1_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -18,17 +18,17 @@
         app:srcCompat="@drawable/logo" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/changepasswordsuccessfull_image2_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/changepasswordsuccessfull_image1_img"
         app:srcCompat="@drawable/online_course" />
 
     <Button
-        android:id="@+id/get_stated"
+        android:id="@+id/changepasswordsuccessfull_backtologin_btn"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginTop="160dp"
@@ -37,6 +37,6 @@
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/changepasswordsuccessfull_image1_img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

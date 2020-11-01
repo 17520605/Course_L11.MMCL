@@ -16,7 +16,7 @@ public class GetStartedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getstarted);
-        setUIReference();
+        InitUIs();
 
 
         get_started.setOnClickListener(new View.OnClickListener() {
@@ -29,7 +29,11 @@ public class GetStartedActivity extends AppCompatActivity {
 
     }
 
-    private void setUIReference() {
-        get_started=findViewById(R.id.get_stated);
+    private void InitUIs() {
+        get_started=findViewById(R.id.changepasswordsuccessfull_backtologin_btn);
+    }
+    private void CheckLogin(){
+        //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
     }
 }

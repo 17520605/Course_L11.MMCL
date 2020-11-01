@@ -1,7 +1,9 @@
 package Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,6 +45,7 @@ public class AccountSettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setting);
+        user = GetUserAccount();
         initUIs();
         initEventHandles();
         Sync();
@@ -74,7 +77,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                 .create(IUserService.class);
 
         //==============================get Share references===============================================================
-        service.login("nguyenhuuminhkhai@gmail.com", "K123123123").enqueue(new Callback<User>() {
+        service.login(user.mail, user.matkhau).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
@@ -115,7 +118,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                         Address_EditText.getText().toString(),
                         Description_EditText.getText().toString(),
                         Gender_EditText.getText().toString(),
-                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODI3MDliYjRlMzgwN2JmNDBmZWM3MSIsInJvbGUiOiJzdHVkZW50IiwiYWN0aXZlIjowLCJpYXQiOjE2MDMwNDMzODN9.pvS1-9UNOLLC5on4fLPrE4yn6MC7dS7f8Vhj2ujkZLg")
+                        user.token)
                 .enqueue(new Callback<ChangeProfileResponeModel>() {
                     @Override
                     public void onResponse(Call<ChangeProfileResponeModel> call, Response<ChangeProfileResponeModel> response) {
@@ -160,5 +163,22 @@ public class AccountSettingActivity extends AppCompatActivity {
             Description_EditText.setText(user.mota);
             Gender_EditText.setText(user.gioitinh);
         }
+    }
+
+    private UserAccount GetUserAccount(){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return new UserAccount(
+                pref.getString("name", "default"),
+                "",
+                pref.getString("phone", "default"),
+                pref.getString("image", "default"),
+                pref.getString("email", "default"),
+                pref.getString("id", "default"),
+                pref.getString("token", "default"),
+                pref.getString("gender", "default"),
+                pref.getString("description", "default"),
+                pref.getString("address", "default"),
+                pref.getString("password", "default")
+        );
     }
 }

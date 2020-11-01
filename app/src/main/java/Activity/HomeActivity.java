@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment;
 import com.example.tutorial_v1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import Fragment.AccountFragment;
 import Fragment.HomeFragment;
@@ -28,9 +31,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setUIReference();
-        bottomNav.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
 
+        bottomNav.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+
     }
 
     private void setUIReference() {

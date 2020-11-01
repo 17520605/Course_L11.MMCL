@@ -1,7 +1,9 @@
 package Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.example.tutorial_v1.R;
 
 import Activity.AccountSettingActivity;
 import Activity.ActiveAccountActivity;
+import Activity.ChangePasswordActivity;
+import Activity.LoginActivity;
 import Model.User;
 import Model.UserAccount;
 import Retrofit.IUserService;
@@ -26,15 +30,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AccountFragment extends Fragment
 {
-    private View rootView;
-    private UserAccount user = new UserAccount();
+
+    private UserAccount user;
     private IUserService service;
+
+    private View rootView;
     private TextView Name;
     private ImageView Active_ImageView;
     private ImageView NonActive_ImageView;
-
+    private ImageView logout;
     private ImageView accountSetting;
     private ImageView contract;
+    private ImageView changepassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,11 +50,8 @@ public class AccountFragment extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_account, container, false);
-
+        user = GetUserAccount();
         initUIs();
         initEventHandles();
 
@@ -69,6 +73,9 @@ public class AccountFragment extends Fragment
         contract = rootView.findViewById(R.id.contact_support);
         Active_ImageView = rootView.findViewById(R.id.active_btn);
         NonActive_ImageView = rootView.findViewById(R.id.nonactive_btn);
+        changepassword = rootView.findViewById(R.id.home_account_changepassword_btn);
+        logout = rootView.findViewById(R.id.account_account_logout_btn);
+
     }
 
     private void initEventHandles(){
@@ -82,6 +89,17 @@ public class AccountFragment extends Fragment
             getActivity().startActivity(intent);
         });
 
+        changepassword.setOnClickListener(v -> {
+            Intent intent = new Intent( getActivity(), ChangePasswordActivity.class);
+            getActivity().startActivity(intent);
+        });
+
+        logout.setOnClickListener(v -> {
+            SharedPreferences pref =  PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            pref.edit().clear().commit();
+            Intent intent = new Intent( getActivity(), LoginActivity.class);
+            getActivity().startActivity(intent);
+        });
 
     }
 
@@ -93,7 +111,7 @@ public class AccountFragment extends Fragment
                 .create(IUserService.class);
 
         //==============================get Share references===============================================================
-        service.login("nguyenhuuminhkhai@gmail.com", "K123123123").enqueue(new Callback<User>() {
+        service.login(user.mail, user.matkhau).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
@@ -129,5 +147,21 @@ public class AccountFragment extends Fragment
         }
     }
 
+    private UserAccount GetUserAccount(){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        return new UserAccount(
+                pref.getString("name", "default"),
+                "",
+                pref.getString("phone", "default"),
+                pref.getString("image", "default"),
+                pref.getString("email", "default"),
+                pref.getString("id", "default"),
+                pref.getString("token", "default"),
+                pref.getString("gender", "default"),
+                pref.getString("description", "default"),
+                pref.getString("address", "default"),
+                pref.getString("password", "default")
+        );
+    }
 }
 

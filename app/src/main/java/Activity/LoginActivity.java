@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import Model.User;
 import dmax.dialog.SpotsDialog;
 import com.example.tutorial_v1.R;
 
@@ -30,7 +32,6 @@ import retrofit2.Retrofit;
 
 
 public class LoginActivity extends AppCompatActivity {
-
     private Button login_btn;
     private TextView regisTextView,forgotPassword;
     private EditText email, password;
@@ -49,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         setUIReference();
+
+        if(CheckUserLogin()){
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+            return;
+        }
 
         Retrofit retrofitClient= RetrofitClient.getInstance();
         iMyService = retrofitClient.create(IMyService.class);
@@ -100,12 +107,14 @@ public class LoginActivity extends AppCompatActivity {
                                     String responseString=stringResponse.body().toString();
                                     try {
                                         JSONObject jo=new JSONObject(responseString);
-                                        userAccount=new UserAccount(jo.getString("name"),"",
+                                        userAccount=new UserAccount(
+                                                jo.getString("name"),
+                                                "",
                                                 jo.getString("phone"),
                                                 jo.getString("image"),
                                                 jo.getString("email"),
-                                                stringResponse.headers().get("Auth-token"),
                                                 jo.getString("gender"),
+                                                stringResponse.headers().get("Auth-token"),
                                                 jo.getString("description"),
                                                 jo.getString("address"),
                                                 MatKhau,
@@ -207,5 +216,14 @@ public class LoginActivity extends AppCompatActivity {
             password.setError(null);
         }
         return valid;
+    }
+
+    private boolean CheckUserLogin(){
+        if(sharedPreferences != null){
+            if(sharedPreferences.getString("id", "default").compareTo("default") != 0){
+                return  true;
+            }
+        }
+        return  false;
     }
 }

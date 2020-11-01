@@ -23,6 +23,7 @@ public interface IUserService {
                         @Field("gender") String gender,
                         @Field("email") String email);
 
+
     @POST("login")
     @FormUrlEncoded
     Call<User> login(@Field("email") String email,
@@ -31,17 +32,25 @@ public interface IUserService {
 
     @PUT("change-profile")
     @FormUrlEncoded
-    Call<ChangeProfileResponeModel> change( @Field("name") String name,
-                                   @Field("phone") String phone,
-                                   @Field("address") String address,
-                                   @Field("description") String description,
-                                   @Field("gender") String gender,
-                                   @Header("auth-token") String token);
+    Call<ChangeProfileResponeModel> change(@Field("name") String name,
+                                           @Field("phone") String phone,
+                                           @Field("address") String address,
+                                           @Field("description") String description,
+                                           @Field("gender") String gender,
+                                           @Header("auth-token") String token);
 
 
     @POST("active-account")
     @FormUrlEncoded
     Call<String> active( @Field("email") String email,
                          @Field("activeToken") String activeToken);
+
+
+
+    @PUT("change-password")
+    @FormUrlEncoded
+    Call<ChangeProfileResponeModel> changepassword ( @Field("oldpassword") String oldpass,
+                                                     @Field("newpassword") String newpass,
+                                                     @Header("auth-token") String authtoken);
 
 }
