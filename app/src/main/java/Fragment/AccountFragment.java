@@ -14,11 +14,15 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.tutorial_v1.R;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import Activity.AccountSettingActivity;
 import Activity.ActiveAccountActivity;
 import Activity.ChangePasswordActivity;
 import Activity.LoginActivity;
+import Activity.UploadAvatarActivity;
 import Model.User;
 import Model.UserAccount;
 import Retrofit.IUserService;
@@ -37,6 +41,7 @@ public class AccountFragment extends Fragment
     private View rootView;
     private TextView Name;
     private ImageView Active_ImageView;
+    private ImageView avatar;
     private ImageView NonActive_ImageView;
     private ImageView logout;
     private ImageView accountSetting;
@@ -69,13 +74,13 @@ public class AccountFragment extends Fragment
     }
 
     private void initUIs() {
+        avatar = rootView.findViewById(R.id.accountFrag_user_avatar);
         accountSetting = rootView.findViewById(R.id.account_setting);
         contract = rootView.findViewById(R.id.contact_support);
         Active_ImageView = rootView.findViewById(R.id.active_btn);
         NonActive_ImageView = rootView.findViewById(R.id.nonactive_btn);
         changepassword = rootView.findViewById(R.id.home_account_changepassword_btn);
         logout = rootView.findViewById(R.id.account_account_logout_btn);
-
     }
 
     private void initEventHandles(){
@@ -100,7 +105,6 @@ public class AccountFragment extends Fragment
             Intent intent = new Intent( getActivity(), LoginActivity.class);
             getActivity().startActivity(intent);
         });
-
     }
 
     private void Sync(){
@@ -117,7 +121,7 @@ public class AccountFragment extends Fragment
                 if(response.isSuccessful()){
                     if(user == null) user = new UserAccount();
                     user.hoten = response.body().getName();
-                    user.token = "";
+                    user.ava = response.body().getImage();
                     ReloadContent();
                 }
                 else{
@@ -144,6 +148,13 @@ public class AccountFragment extends Fragment
                 Active_ImageView.setVisibility(View.VISIBLE);
                 NonActive_ImageView.setVisibility(View.GONE);
             }
+
+            Picasso.get().load("http://149.28.24.98:9000/upload/user_image/" + user.ava)
+                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.logo)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(avatar);
         }
     }
 

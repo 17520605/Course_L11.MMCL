@@ -3,14 +3,18 @@ package Retrofit;
 import Model.ChangeProfileResponeModel;
 import Model.User;
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 
 public interface IUserService {
     @POST("register")
@@ -52,5 +56,14 @@ public interface IUserService {
     Call<ChangeProfileResponeModel> changepassword ( @Field("oldpassword") String oldpass,
                                                      @Field("newpassword") String newpass,
                                                      @Header("auth-token") String authtoken);
+
+
+
+    @Multipart
+    @PUT("change-avatar")
+    Call<ResponseBody> changeavatar(@Part MultipartBody.Part file,
+                                    @Header("auth-token") String authtoken);
+
+
 
 }

@@ -42,7 +42,7 @@
         app:srcCompat="@drawable/update_profile_picture_for_your_account" />
 
     <ImageView
-        android:id="@+id/imageView24"
+        android:id="@+id/changeavatar_avatar_img"
         android:layout_width="196dp"
         android:layout_height="194dp"
         android:layout_marginTop="20dp"
@@ -60,11 +60,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24"
+        app:layout_constraintTop_toBottomOf="@+id/changeavatar_avatar_img"
         app:srcCompat="@drawable/choose_an_image" />
 
     <ImageView
-        android:id="@+id/btn_pose_img"
+        android:id="@+id/changeavatar_uploadfromcamera_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -74,7 +74,7 @@
         app:srcCompat="@drawable/group__1" />
 
     <ImageView
-        android:id="@+id/btn_upload_img"
+        android:id="@+id/changeavatar_uploadfromgallery_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_upload_img"
+        app:layout_constraintTop_toBottomOf="@+id/changeavatar_uploadfromgallery_img"
         app:srcCompat="@drawable/or" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

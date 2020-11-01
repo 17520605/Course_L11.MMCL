@@ -1,12 +1,15 @@
 package Retrofit;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 
 public interface IMyService {
     @POST("login")
@@ -27,4 +30,13 @@ public interface IMyService {
                                                 @Field("description") String description,
                                                 @Field("gender") String gender,
                                                 @Header("auth-token") String authToken);
+
+
+    @Multipart
+    @PUT("change-avatar")
+    Observable<Response<String>>  changeAva(@Part MultipartBody.Part file,
+                                            @Header("auth-token") String authToken);
+
+
+
 }

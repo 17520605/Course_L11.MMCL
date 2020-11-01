@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/account_settings" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/home_account_avatar_img"
+            android:id="@+id/accountsetting_avatar_img"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:src="@drawable/logo"
@@ -61,7 +61,7 @@
             android:text="FullName"
             android:textColor="@color/font_blue"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_account_avatar_img" />
+            app:layout_constraintTop_toBottomOf="@+id/accountsetting_avatar_img" />
 
         <EditText
             android:id="@+id/input_name"

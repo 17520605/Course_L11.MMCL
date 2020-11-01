@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.tutorial_v1.R;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import Model.ChangeProfileResponeModel;
 import Model.User;
@@ -30,7 +33,7 @@ public class AccountSettingActivity extends AppCompatActivity {
 
     private ImageView Back_Button;
 
-    private ImageView Avatar_ImageView;
+    private ImageView avatar;
     private EditText Name_EditText;
     private EditText Phone_EditText;
     private EditText Email_EditText;
@@ -52,6 +55,7 @@ public class AccountSettingActivity extends AppCompatActivity {
     }
 
     private void initUIs() {
+        avatar = findViewById(R.id.accountsetting_avatar_img);
         Back_Button = findViewById(R.id.btn_back);
         Name_EditText = findViewById(R.id.input_name);
         Phone_EditText = findViewById(R.id.input_phone);
@@ -66,6 +70,11 @@ public class AccountSettingActivity extends AppCompatActivity {
     private void initEventHandles(){
         Change_Button.setOnClickListener(v -> {
             ChangeInfo();
+        });
+
+        avatar.setOnClickListener(v -> {
+            Intent intent=new Intent(AccountSettingActivity.this, UploadAvatarActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -89,6 +98,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                     user.diachia = response.body().getAddress();
                     user.mota = response.body().getDescription();
                     user.gioitinh = response.body().getGender();
+                    user.ava = response.body().getImage();
 
                     ReloadContent();
                 }
@@ -135,6 +145,7 @@ public class AccountSettingActivity extends AppCompatActivity {
                             user.diachia = response.body().getUser().getAddress();
                             user.mota = response.body().getUser().getDescription();
                             user.gioitinh = response.body().getUser().getGender();
+                            user.ava = response.body().getUser().getImage();
                             ReloadContent();
                             Toast.makeText(AccountSettingActivity.this, "Thay đổi thành công", Toast.LENGTH_LONG).show();
 
@@ -162,6 +173,12 @@ public class AccountSettingActivity extends AppCompatActivity {
             Address_EditText.setText(user.diachia);
             Description_EditText.setText(user.mota);
             Gender_EditText.setText(user.gioitinh);
+            Picasso.get().load("http://149.28.24.98:9000/upload/user_image/" + user.ava)
+                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.logo)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(avatar);
         }
     }
 
