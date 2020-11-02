@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import Activity.LoginActivity;
-import Model.UserAccount;
+import model.UserAccount;
 
 public class AppPreference {
     public static UserAccount GetUserAccount(Context context){

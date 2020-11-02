@@ -15,9 +15,9 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import Model.ChangeProfileResponeModel;
-import Model.User;
-import Model.UserAccount;
+import model.ChangeProfileResponeModel;
+import model.User;
+import model.UserAccount;
 import Retrofit.IUserService;
 import Retrofit.RetrofitClient;
 import retrofit2.Call;

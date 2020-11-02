@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.example.tutorial_v1.R;
 
 import Retrofit.IUserService;
-import Model.User;
-import Model.UserAccount;
+import model.User;
+import model.UserAccount;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

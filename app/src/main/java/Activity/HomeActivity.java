@@ -6,18 +6,15 @@ import androidx.fragment.app.Fragment;
 import com.example.tutorial_v1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import Fragment.AccountFragment;
 import Fragment.HomeFragment;
 import Fragment.CategoriesFragment;
 import Fragment.CartFragment;
 import Fragment.NotificationFragment;
-import Model.UserAccount;
+import model.UserAccount;
 
 
 public class HomeActivity extends AppCompatActivity {

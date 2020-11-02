@@ -1,51 +1,29 @@
 package Activity;
 
 import android.Manifest;
-import android.app.ApplicationErrorReport;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.tutorial_v1.R;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
-import Model.ChangeProfileResponeModel;
-import Model.User;
-import Model.UserAccount;
-import Retrofit.IMyService;
+import model.User;
+import model.UserAccount;
 import Retrofit.IUserService;
 import Retrofit.AppPreference;
-import Retrofit.RetrofitClient;
-import es.dmoral.toasty.Toasty;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
