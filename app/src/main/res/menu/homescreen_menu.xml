@@ -6,9 +6,9 @@
         android:icon="@drawable/icons8_home_100px"
         />
     <item
-        android:id="@+id/nav_btn_categories"
-        android:title="Categories"
-        android:icon="@drawable/icons8_circled_menu_100px"
+        android:id="@+id/nav_btn_search"
+        android:title="Search"
+        android:icon="@drawable/icons8_search_100px"
         />
     <item
         android:id="@+id/nav_btn_cart"
@@ -22,7 +22,7 @@
         />
     <item
         android:id="@+id/nav_btn_account"
-        android:title="Account"
+        android:title="Setting"
         android:icon="@drawable/icons8_menu_100px_3"
         />
 </menu>

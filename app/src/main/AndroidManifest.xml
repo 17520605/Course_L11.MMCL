@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
 
-        <activity android:name="Activity.GetStartedActivity"></activity>
+        <activity android:name="Activity.GetStartedActivity">
+
+        </activity>
         <activity android:name="Activity.ForgotPasswordActivity"></activity>
         <activity android:name="Activity.UserInfoActivity"></activity>
         <activity android:name="Activity.RegisterActivity"></activity>
@@ -27,6 +29,8 @@
         </activity>
         <activity android:name="Activity.AccountSettingActivity"></activity>
         <activity android:name="Activity.ActiveAccountActivity"></activity>
+        <activity android:name="Activity.CourseActivity"></activity>
+        <activity android:name="Activity.CategoryActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

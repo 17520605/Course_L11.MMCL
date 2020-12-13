@@ -15,11 +15,10 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import model.ChangeProfileResponeModel;
-import model.User;
-import model.UserAccount;
+import Model.ChangeProfileResponeModel;
+import Model.User;
+import Model.UserAccount;
 import Retrofit.IUserService;
-import Retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +55,6 @@ public class AccountSettingActivity extends AppCompatActivity {
 
     private void initUIs() {
         avatar = findViewById(R.id.accountsetting_avatar_img);
-        Back_Button = findViewById(R.id.btn_back);
         Name_EditText = findViewById(R.id.input_name);
         Phone_EditText = findViewById(R.id.input_phone);
         Email_EditText = findViewById(R.id.input_email);
@@ -115,7 +113,6 @@ public class AccountSettingActivity extends AppCompatActivity {
     }
 
     private void ChangeInfo(){
-
         service = new Retrofit.Builder()
                 .baseUrl("http://149.28.24.98:9000/") // API base url
                 .addConverterFactory(GsonConverterFactory.create()) // Factory phụ thuộc vào format trả về

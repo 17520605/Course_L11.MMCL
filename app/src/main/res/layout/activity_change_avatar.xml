@@ -7,38 +7,30 @@
     android:layout_height="match_parent"
     android:background="@color/colorbackground">
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="54dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Change Avatar"
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="199dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView20"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/change_avatar" />
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView22"
         android:layout_width="300dp"
         android:layout_height="59dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView21"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/update_profile_picture_for_your_account" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -72,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView28"
-        app:srcCompat="@drawable/group__1" />
+        app:srcCompat="@drawable/group_2" />
 
     <ImageView
         android:id="@+id/changeavatar_uploadfromgallery_img"

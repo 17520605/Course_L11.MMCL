@@ -1,29 +1,53 @@
 package Activity;
 
 import android.Manifest;
+import android.app.ApplicationErrorReport;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.tutorial_v1.R;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
-import model.User;
-import model.UserAccount;
+import Model.ChangeProfileResponeModel;
+import Model.User;
+import Model.UserAccount;
+import Retrofit.IMyService;
 import Retrofit.IUserService;
 import Retrofit.AppPreference;
+import Retrofit.RetrofitClient;
+import es.dmoral.toasty.Toasty;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -92,16 +116,22 @@ public class UploadAvatarActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            final Uri imageUri = data.getData();
-            final InputStream imageStream;
-            File file = new File(imageUri.getPath().substring(4)); // bo "/raw"
+        if (resultCode == RESULT_OK && reqCode == 1000) {
+           // Bitmap bitmap= (Bitmap) data.getData();
+            Uri path =  data.getData();
+            File file = new File(getRealPathFromURI(path));
             UploadImage(file);
 
-        }else {
-            Toast.makeText(UploadAvatarActivity.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+        }
+        else if(resultCode == RESULT_OK && reqCode == 1001){
+            Bitmap bitmap= (Bitmap) data.getExtras().get("data");
+            Uri path = getImageUri(UploadAvatarActivity.this, bitmap);
+            File file = new File(getRealPathFromURI(path));
+            UploadImage(file);
         }
     }
+
+
 
     private void initUIs() {
         avatar = findViewById(R.id.changeavatar_avatar_img);
@@ -185,7 +215,6 @@ public class UploadAvatarActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                //show popup for runtime permission
                 requestPermissions(permissions, 100);
             }
             else {
@@ -212,23 +241,36 @@ public class UploadAvatarActivity extends AppCompatActivity {
                 .create(IUserService.class);
 
         service.changeavatar(part, user.token)
-               .enqueue(new Callback<ResponseBody>() {
-                   @Override
-                   public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                       if(response.isSuccessful()){
-                           Toast.makeText(UploadAvatarActivity.this, "Thanh cong", Toast.LENGTH_LONG).show();
-                           Sync();
-                       }
-                       else{
-                           Toast.makeText(UploadAvatarActivity.this, "That bai", Toast.LENGTH_LONG).show();
-                       }
-                   }
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if(response.isSuccessful()){
+                            Toast.makeText(UploadAvatarActivity.this, "Thanh cong", Toast.LENGTH_LONG).show();
+                            Sync();
+                        }
+                        else{
+                            Toast.makeText(UploadAvatarActivity.this, "That bai", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
-                   @Override
-                   public void onFailure(Call<ResponseBody> call, Throwable t) {
-                       Toast.makeText(UploadAvatarActivity.this, "Loi he thong", Toast.LENGTH_LONG).show();
-                   }
-               });
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(UploadAvatarActivity.this, "Loi he thong", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
+    private String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 }

@@ -10,26 +10,20 @@
         android:layout_height="match_parent"
         android:background="@color/colorbackground">
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="55dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back" />
-
-        <ImageView
-            android:id="@+id/imageView6"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:text="Account Setting"
+
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
-            app:layout_constraintStart_toEndOf="@+id/btn_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/account_settings" />
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/accountsetting_avatar_img"

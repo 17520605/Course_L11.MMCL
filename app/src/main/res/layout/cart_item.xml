@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_with_shadow"
+
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:id="@+id/layout_wish_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/home_cart_item_image"
+            android:layout_width="30dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/imgcoursejava" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1.8"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:id="@+id/home_cart_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khóa học lập trình java"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/home_cart_item_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nguyễn Văn A"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/home_cart_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="$ 200"
+                android:textSize="15dp"
+                android:textColor="#792727"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/home_cart_item_remove"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+                android:src="@drawable/icons8_trash_100px" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
+

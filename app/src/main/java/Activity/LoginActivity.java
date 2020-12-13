@@ -13,13 +13,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import Model.User;
 import dmax.dialog.SpotsDialog;
 import com.example.tutorial_v1.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.UserAccount;
+import Model.UserAccount;
 import Retrofit.*;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

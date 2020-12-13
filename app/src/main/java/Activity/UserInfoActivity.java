@@ -17,7 +17,7 @@ import com.example.tutorial_v1.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.UserAccount;
+import Model.UserAccount;
 import Retrofit.IMyService;
 import Retrofit.RetrofitClient;
 import dmax.dialog.SpotsDialog;

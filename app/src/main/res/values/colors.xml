@@ -14,5 +14,7 @@
     <color name="green">#008000</color>
     <color name="font_blue">#5E9CFA</color>
     <color name="colorbackground">#FAFBFD</color>
+    <color name="textColor">#060606</color>
     <color name="bg_menu">#ECEDF1</color>
+    <color name="stay_color">#999999</color>
 </resources>

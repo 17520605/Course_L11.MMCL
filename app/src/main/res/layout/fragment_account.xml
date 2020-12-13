@@ -21,16 +21,20 @@
         app:civ_border_width="1dp" />
 
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/personal" />
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Presonal"
 
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/accountFrag_user_name"
         android:layout_width="wrap_content"
@@ -133,7 +137,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/accountFrag_user_avatar"
         app:layout_constraintTop_toBottomOf="@+id/accountFrag_user_name"
-        app:srcCompat="@drawable/group_48" />
+        app:srcCompat="@drawable/group_50" />
     <ImageView
         android:id="@+id/nonactive_btn"
         android:layout_width="80dp"

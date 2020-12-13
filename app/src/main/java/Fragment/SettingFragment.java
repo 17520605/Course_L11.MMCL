@@ -22,8 +22,8 @@ import Activity.AccountSettingActivity;
 import Activity.ActiveAccountActivity;
 import Activity.ChangePasswordActivity;
 import Activity.LoginActivity;
-import model.User;
-import model.UserAccount;
+import Model.User;
+import Model.UserAccount;
 import Retrofit.IUserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AccountFragment extends Fragment
+public class SettingFragment extends Fragment
 {
 
     private UserAccount user;
@@ -46,6 +46,7 @@ public class AccountFragment extends Fragment
     private ImageView accountSetting;
     private ImageView contract;
     private ImageView changepassword;
+    private ImageView courseOfYouInjon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class AccountFragment extends Fragment
         contract = rootView.findViewById(R.id.contact_support);
         Active_ImageView = rootView.findViewById(R.id.active_btn);
         NonActive_ImageView = rootView.findViewById(R.id.nonactive_btn);
+        courseOfYouInjon = rootView.findViewById(R.id.course_buy);
         changepassword = rootView.findViewById(R.id.home_account_changepassword_btn);
         logout = rootView.findViewById(R.id.account_account_logout_btn);
     }
@@ -87,7 +89,10 @@ public class AccountFragment extends Fragment
             Intent intent = new Intent( getActivity(), AccountSettingActivity.class);
             getActivity().startActivity(intent);
         });
-
+        courseOfYouInjon.setOnClickListener(v -> {
+            Intent intent = new Intent( getActivity(), AccountSettingActivity.class);
+            getActivity().startActivity(intent);
+        });
         NonActive_ImageView.setOnClickListener(v -> {
             Intent intent = new Intent( getActivity(), ActiveAccountActivity.class);
             getActivity().startActivity(intent);
