@@ -17,14 +17,11 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import Adapter.CourseAdapter;
 import Model.Course;
 import Retrofit.ICourseService;
-import Retrofit.IUserService;
 import Retrofit.ServiceClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +47,7 @@ public class CourseActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
+        setContentView(R.layout.activity_course_detail);
         initUIs();
         initEvents();
         Sync();
@@ -65,8 +62,8 @@ public class CourseActivity extends AppCompatActivity {
         description = findViewById(R.id.course_description);
         rating = findViewById(R.id.course_rating);
         totalvote = findViewById(R.id.course_totalvote);
-        comments = findViewById(R.id.course_comments);
-        suggestedcourses = findViewById(R.id.course_suggestedcourses);
+        comments = findViewById(R.id.courseComment);
+        suggestedcourses = findViewById(R.id.recommendCourses);
         price = findViewById(R.id.course_price);
         addtocard = findViewById(R.id.course_addtocard);
     }
