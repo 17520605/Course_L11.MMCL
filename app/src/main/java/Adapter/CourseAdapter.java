@@ -15,6 +15,8 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import Activity.CourseActivity;
@@ -48,6 +50,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
                 .into(holder.image);
         holder.title.setText(course.getName());
         holder.fee.setText(course.getPrice().compareTo("0")  == 0 ? "FREE" : course.getPrice() + " đ" );
+//        NumberFormat formatter = new DecimalFormat("#,###");
+//        double price=(double)data.get(position).getPrice();
+//        String formattedNumber1 = formatter.format(price);
+//        if(formattedNumber1.equals("0")) holder.fee.setText("Miễn phí");
+//        else
+//            holder.fee.setText(formattedNumber1+" đ");
         holder.total.setText(course.getVote().getTotalVote());
         holder.rating.setRating(Float.valueOf(course.getVote().getEVGVote()));
         holder.image.setOnClickListener(v -> {
